@@ -85,8 +85,9 @@ static VALUE blurrily_put(VALUE self, VALUE rb_needle, VALUE rb_reference, VALUE
   char*        needle    = StringValuePtr(rb_needle);
   char*        reference = StringValueCStr(rb_reference);
   uuid_t       ref_uuid;
-  uuid_parse(reference, ref_uuid);
   uint32_t     weight    = NUM2UINT(rb_weight);
+
+  uuid_parse(reference, ref_uuid);
 
   if (raise_if_closed(self)) return Qnil;
   Data_Get_Struct(self, struct trigram_map_t, haystack);
@@ -103,8 +104,9 @@ static VALUE blurrily_delete(VALUE self, VALUE rb_reference) {
   trigram_map  haystack  = (trigram_map)NULL;
   char*        reference = StringValueCStr(rb_reference);
   uuid_t       ref_uuid;
-  uuid_parse(reference, ref_uuid);
   int          res       = -1;
+
+  uuid_parse(reference, ref_uuid);
 
   if (raise_if_closed(self)) return Qnil;
   Data_Get_Struct(self, struct trigram_map_t, haystack);
