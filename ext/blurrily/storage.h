@@ -9,6 +9,7 @@
 #define __STORAGE_H__
 
 #include <inttypes.h>
+#include <uuid/uuid.h>
 #include "tokeniser.h"
 #include "blurrily.h"
 
