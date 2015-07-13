@@ -12,6 +12,13 @@ describe Blurrily::CommandProcessor do
     # FIND -><db>-><needle>->[limit]
     # PUT-><db>-><needle>-><ref>->[weight]
 
+    it 'PUT and FIND with a zero-d out UUID' do
+      expect(subject.process_command("PUT\tlocations_en\tthe coromandel\t00000000-0000-4000-A000-000000000000")).
+        to eq('OK')
+      expect(subject.process_command("FIND\tlocations_en\tcoromandel")).
+        to eq("OK\t00000000-0000-4000-A000-000000000000\t10\t14")
+    end
+
     it 'PUT and FIND finds something x1' do
       expect(subject.process_command("PUT\tlocations_en\tauckland region\t10000000-0000-4000-A000-000000000010")).
         to eq('OK')

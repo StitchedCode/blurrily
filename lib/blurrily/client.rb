@@ -136,7 +136,7 @@ module Blurrily
     end
 
     def valid_uuid? s
-      !(s =~ /[A-F1-9][A-F0-9]{7}-[A-F0-9]{4}-4[A-F0-9]{3}-[89AB][A-F0-9]{3}-[A-F0-9]{12}/i).nil?
+      !(s =~ /[A-F0-9]{8}-[A-F0-9]{4}-4[A-F0-9]{3}-[89AB][A-F0-9]{3}-[A-F0-9]{12}/i).nil?
     end
 
   end
