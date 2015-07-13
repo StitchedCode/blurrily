@@ -161,7 +161,7 @@ static VALUE blurrily_find(VALUE self, VALUE rb_needle, VALUE rb_limit) {
   for (int k = 0; k < res; ++k) {
     VALUE rb_match = rb_ary_new();
     char ref_str[37] = "";
-    uuid_unparse(matches[k].reference, ref_str);
+    uuid_unparse_lower(matches[k].reference, ref_str);
     rb_ary_push(rb_match, rb_str_new2(ref_str));
     rb_ary_push(rb_match, rb_uint_new(matches[k].matches));
     rb_ary_push(rb_match, rb_uint_new(matches[k].weight));

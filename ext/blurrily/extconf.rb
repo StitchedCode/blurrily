@@ -15,6 +15,9 @@ end
 # production
 $CFLAGS += " #{SHARED_FLAGS} -Os"
 
+# libuuid stuff
+$LDFLAGS = " -luuid -lm"
+
 # development
 # $CFLAGS += " #{SHARED_FLAGS} -O0 -g"
 

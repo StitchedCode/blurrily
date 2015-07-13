@@ -49,7 +49,7 @@ void blurrily_refs_free(blurrily_refs_t** refs_ptr)
 void blurrily_refs_add(blurrily_refs_t* refs, uuid_t ref)
 {
   char ref_str[37] = "";
-  uuid_unparse(ref, ref_str);
+  uuid_unparse_lower(ref, ref_str);
   (void) rb_hash_aset(refs->hash, rb_str_new2(ref_str), Qtrue);
   return;
 }
@@ -59,7 +59,7 @@ void blurrily_refs_add(blurrily_refs_t* refs, uuid_t ref)
 void blurrily_refs_remove(blurrily_refs_t* refs, uuid_t ref)
 {
   char ref_str[37] = "";
-  uuid_unparse(ref, ref_str);
+  uuid_unparse_lower(ref, ref_str);
   (void) rb_hash_aset(refs->hash, rb_str_new2(ref_str), Qnil);
 }
 
@@ -68,6 +68,6 @@ void blurrily_refs_remove(blurrily_refs_t* refs, uuid_t ref)
 int blurrily_refs_test(blurrily_refs_t* refs, uuid_t ref)
 {
   char ref_str[37] = "";
-  uuid_unparse(ref, ref_str);
+  uuid_unparse_lower(ref, ref_str);
   return rb_hash_aref(refs->hash, rb_str_new2(ref_str)) == Qtrue ? 1 : 0;
 }
